@@ -8,6 +8,13 @@
         <option value="$PROJECT_DIR$/fm-client/pom.xml" />
         <option value="$PROJECT_DIR$/fm-push-server/pom.xml" />
         <option value="$PROJECT_DIR$/fm-router/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-common/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-router/fm-router-api/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-router/fm-router-biz/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-push-server/fm-push-server-api/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-push-server/fm-push-server-impl/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-client/fm-client-api/pom.xml" />
+        <option value="$PROJECT_DIR$/fm-client/fm-client-impl/pom.xml" />
       </list>
     </option>
   </component>

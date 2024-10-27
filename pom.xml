@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.3.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -13,6 +13,7 @@
         <module>fm-client</module>
         <module>fm-push-server</module>
         <module>fm-router</module>
+        <module>fm-common</module>
     </modules>
 
     <groupId>com.baiyina</groupId>
@@ -20,32 +21,93 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>fm</name>
-    <description>fm</description>
+    <description>这是一个用于管理多个模块的Maven项目，包括客户端、推送服务器、路由和通用模块。</description>
 
     <properties>
         <java.version>17</java.version>
+        <spring.boot.version>3.3.5</spring.boot.version>
+        <lombok.version>1.18.34</lombok.version>
+        <fm-router-api.version>0.0.1-SNAPSHOT</fm-router-api.version>
+        <fm-push-server-api.version>0.0.1-SNAPSHOT</fm-push-server-api.version>
+        <fm-common.version>0.0.1-SNAPSHOT</fm-common.version>
+        <mybatis-plus-boot-starter.version>3.5.7</mybatis-plus-boot-starter.version>
+        <mysql.version>8.2.0</mysql.version>
+        <hutool.version>5.8.26</hutool.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>4.4.0</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <!-- 内部模块引用-->
+            <dependency>
+                <groupId>com.baiyina</groupId>
+                <artifactId>fm-router-api</artifactId>
+                <version>${fm-router-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baiyina</groupId>
+                <artifactId>fm-push-server-api</artifactId>
+                <version>${fm-push-server-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baiyina</groupId>
+                <artifactId>fm-common</artifactId>
+                <version>${fm-common.version}</version>
+            </dependency>
 
-    <build>
-        <plugins>
-            <plugin>
+            <!-- Spring Boot 依赖 -->
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Lombok 依赖 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- mysql依赖 -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+            <!-- hutool-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <!-- 注意这里是import -->
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
 </project>
