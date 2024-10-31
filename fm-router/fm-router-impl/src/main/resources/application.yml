@@ -17,8 +17,19 @@ mybatis-plus:
       id-type: auto
       logic-delete-value: 1
       logic-not-delete-value: 0
+eureka:
+  instance:
+    # eureka服务端的名称
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      # 设置与Eureka Server交互的查询服务和注册服务的地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
-  # enable swagger
+# enable swagger
 springdoc:
   swagger-ui:
     enabled: true

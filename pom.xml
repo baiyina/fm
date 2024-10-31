@@ -26,6 +26,7 @@
     <properties>
         <java.version>17</java.version>
         <spring.boot.version>3.3.5</spring.boot.version>
+        <spring.cloud.version>2023.0.3</spring.cloud.version>
         <lombok.version>1.18.34</lombok.version>
         <fm-router-api.version>0.0.1-SNAPSHOT</fm-router-api.version>
         <fm-push-server-api.version>0.0.1-SNAPSHOT</fm-push-server-api.version>
@@ -33,17 +34,21 @@
         <mybatis-plus-boot-starter.version>3.5.7</mybatis-plus-boot-starter.version>
         <mysql.version>8.2.0</mysql.version>
         <hutool.version>5.8.26</hutool.version>
+        <okhttp.version>4.12.0</okhttp.version>
+        <protobuf.version>4.28.2</protobuf.version>
+        <netty.version>4.1.114.Final</netty.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- API 文档工具 -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>4.4.0</version>
             </dependency>
 
-            <!-- 内部模块引用-->
+            <!-- 内部模块引用 -->
             <dependency>
                 <groupId>com.baiyina</groupId>
                 <artifactId>fm-router-api</artifactId>
@@ -72,6 +77,13 @@
                 <version>${spring.boot.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <!-- Lombok 依赖 -->
             <dependency>
@@ -80,7 +92,7 @@
                 <version>${lombok.version}</version>
             </dependency>
 
-            <!-- mysql依赖 -->
+            <!-- MySQL 依赖 -->
             <dependency>
                 <groupId>com.mysql</groupId>
                 <artifactId>mysql-connector-j</artifactId>
@@ -97,14 +109,43 @@
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
 
-            <!-- hutool-->
+            <!-- Hutool 依赖 -->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-bom</artifactId>
                 <version>${hutool.version}</version>
                 <type>pom</type>
-                <!-- 注意这里是import -->
                 <scope>import</scope>
+            </dependency>
+
+            <!-- OkHttp 依赖 -->
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp-bom</artifactId>
+                <version>${okhttp.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Kryo 序列化 -->
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>5.2.0</version>
+            </dependency>
+
+            <!-- Protobuf 依赖 -->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.version}</version>
+            </dependency>
+
+            <!-- Netty 依赖 -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
             </dependency>
 
         </dependencies>

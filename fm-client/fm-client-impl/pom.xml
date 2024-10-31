@@ -19,6 +19,11 @@
     <dependencies>
         <dependency>
             <groupId>com.baiyina</groupId>
+            <artifactId>fm-router-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baiyina</groupId>
             <artifactId>fm-common</artifactId>
         </dependency>
 

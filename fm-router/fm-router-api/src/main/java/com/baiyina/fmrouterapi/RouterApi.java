@@ -1,6 +1,8 @@
 package com.baiyina.fmrouterapi;
 
 import com.baiyina.fmcommon.pojo.CommonResult;
+import com.baiyina.fmrouterapi.user.vo.UserRegisterReqVO;
+import com.baiyina.fmrouterapi.user.vo.UserRegisterResVO;
 
 /**
  * @description: TODO

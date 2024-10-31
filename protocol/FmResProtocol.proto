@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package protocol;
+
+option java_package = "com.baiyina.fmcommon.protocol.protobuf";
+option java_outer_classname = "FmResponseProto";
+
+// 响应消息的协议定义
+message FmResProto {
+  // 响应的唯一标识符
+  int64 response_key = 1;
+
+  // 请求的ID
+  int32 request_id = 2;
+
+  // 响应的消息内容
+  string resp_msg = 3;
+
+  // 响应的状态码
+  int32 status_code = 4;
+
+  // 响应的类型
+  int32 type = 5;
+}

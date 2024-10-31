@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protocol;
+
+option java_package = "com.baiyina.fmcommon.protocol.protobuf";
+option java_outer_classname = "FmRequestProto";
+
+// 请求消息的协议定义
+message FmReqProto {
+  // 请求的唯一标识符
+  int64 request_key = 1;
+
+  // 请求的ID
+  int32 request_id = 2;
+
+  // 请求的消息内容
+  string req_msg = 3;
+
+  // 请求的类型
+  int32 type = 4;
+}

@@ -1,10 +1,10 @@
 package com.baiyina.fmrouterimpl.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.baiyina.fmrouterimpl.controller.vo.UserLoginReqVO;
-import com.baiyina.fmrouterimpl.controller.vo.UserLoginResVO;
-import com.baiyina.fmrouterimpl.controller.vo.UserRegisterReqVO;
-import com.baiyina.fmrouterimpl.controller.vo.UserRegisterResVO;
+import com.baiyina.fmrouterapi.user.vo.UserLoginReqVO;
+import com.baiyina.fmrouterapi.user.vo.UserLoginResVO;
+import com.baiyina.fmrouterapi.user.vo.UserRegisterReqVO;
+import com.baiyina.fmrouterapi.user.vo.UserRegisterResVO;
 import com.baiyina.fmrouterimpl.dao.dos.UserDO;
 import com.baiyina.fmrouterimpl.dao.mapper.UserMapper;
 import com.baiyina.fmrouterimpl.enums.RouterExceptionEnum;
@@ -12,7 +12,7 @@ import com.baiyina.fmrouterimpl.service.UserService;
 import com.baiyina.fmrouterimpl.utils.RouterExceptionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
  * @date: 2024/10/26 14:15
  * @project: fm
  */
+@Slf4j
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService{
     @Override
@@ -48,6 +49,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         resVo.setUserId(user.getId());
         resVo.setToken(user.getPassword());
 
+        log.info("register user: {}", user);
+
         return resVo;
     }
 
@@ -55,7 +58,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     public UserLoginResVO login(UserLoginReqVO reqVo) {
         // 参数校验
         if (reqVo == null || StrUtil.isBlank(reqVo.getUsername()) || StrUtil.isBlank(reqVo.getPassword())) {
-            RouterExceptionUtil.handlerException(RouterExceptionEnum.ROUTER_REGISTER_INVALID_INPUT_EXCEPTION);
+            RouterExceptionUtil.handlerException(RouterExceptionEnum.ROUTER_LOGIN_INVALID_INPUT_EXCEPTION);
         }
         UserDO user = getUserByUsername(reqVo.getUsername());
         if (user == null){
@@ -66,6 +69,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         UserLoginResVO resVo = new UserLoginResVO();
         resVo.setUserId(user.getId());
         resVo.setExpireTime(LocalDateTime.now());
+
+        log.info("login user: {}", user);
         return resVo;
     }
 

@@ -1,5 +1,7 @@
 package com.baiyina.fmclientimpl.enums;
 
+import com.baiyina.fmcommon.exception.FmException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +37,7 @@ public enum CommandEnum {
                 return commandEnum;
             }
         }
-        return null;
+        throw new FmException(ClientExceptionEnum.COMMAND_INPUT_ERROR.getCode(), "command not found");
     }
 
     public static Map<String, String> getAllCommandType() {

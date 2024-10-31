@@ -26,7 +26,7 @@ public class Scan implements Runnable{
     public void run() {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            String input = sc.next();
+            String input = sc.nextLine();
 
             inputService.handleInput(input);
 

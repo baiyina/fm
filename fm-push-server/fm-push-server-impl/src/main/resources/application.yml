@@ -1,0 +1,9 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: fm-push-server
+
+fm:
+  push:
+    server: 10011

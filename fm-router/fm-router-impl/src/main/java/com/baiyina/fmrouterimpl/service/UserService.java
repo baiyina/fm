@@ -1,12 +1,9 @@
 package com.baiyina.fmrouterimpl.service;
 
-import com.baiyina.fmrouterimpl.controller.vo.UserLoginReqVO;
-import com.baiyina.fmrouterimpl.controller.vo.UserLoginResVO;
-import com.baiyina.fmrouterimpl.controller.vo.UserRegisterReqVO;
-import com.baiyina.fmrouterimpl.controller.vo.UserRegisterResVO;
-import com.baiyina.fmrouterimpl.dao.dos.UserDO;
-import com.baiyina.fmrouterimpl.dao.mapper.UserMapper;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baiyina.fmrouterapi.user.vo.UserLoginReqVO;
+import com.baiyina.fmrouterapi.user.vo.UserLoginResVO;
+import com.baiyina.fmrouterapi.user.vo.UserRegisterReqVO;
+import com.baiyina.fmrouterapi.user.vo.UserRegisterResVO;
 
 /**
  * @description: TODO
@@ -22,5 +19,10 @@ public interface UserService{
      */
     UserRegisterResVO register(UserRegisterReqVO reqVo);
 
+    /**
+     * 登录
+     * @param reqVo username & password
+     * @return userid & expireTime
+     */
     UserLoginResVO login(UserLoginReqVO reqVo);
 }
