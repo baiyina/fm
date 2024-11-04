@@ -1,9 +1,8 @@
 package com.baiyina.fmrouterimpl.service;
 
-import com.baiyina.fmrouterapi.user.vo.UserLoginReqVO;
-import com.baiyina.fmrouterapi.user.vo.UserLoginResVO;
-import com.baiyina.fmrouterapi.user.vo.UserRegisterReqVO;
-import com.baiyina.fmrouterapi.user.vo.UserRegisterResVO;
+import com.baiyina.fmrouterapi.user.vo.*;
+
+import java.util.List;
 
 /**
  * @description: TODO
@@ -25,4 +24,10 @@ public interface UserService{
      * @return userid & expireTime
      */
     UserLoginResVO login(UserLoginReqVO reqVo);
+
+    /**
+     * 获取在线用户列表
+     * @return userList
+     */
+    List<UserVO> getOnlineUserList();
 }

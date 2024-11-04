@@ -14,4 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FmResMsgVO {
+    private String msg;
+    private String userName;
 }

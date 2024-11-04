@@ -14,5 +14,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationConfig {
     @Value("${fm.push.server}")
-    private String nettyServerPort;
+    private Integer nettyServerPort;
 }

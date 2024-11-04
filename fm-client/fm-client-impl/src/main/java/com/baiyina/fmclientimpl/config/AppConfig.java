@@ -19,4 +19,5 @@ public class AppConfig {
     @Value("${fm.router.url}")
     private String routerUrl;
 
+
 }

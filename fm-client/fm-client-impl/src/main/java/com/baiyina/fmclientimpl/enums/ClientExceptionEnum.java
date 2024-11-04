@@ -11,6 +11,7 @@ public enum ClientExceptionEnum {
      * 用户相关
      */
     USER_NOT_EXIST(10001, "用户不存在"),
+    USER_NOT_LOGIN(10003, "用户未登录"),
     USER_PASSWORD_ERROR(10002, "用户名或密码错误"),
     COMMAND_INPUT_ERROR(10003, "命令输入错误"),
     ;

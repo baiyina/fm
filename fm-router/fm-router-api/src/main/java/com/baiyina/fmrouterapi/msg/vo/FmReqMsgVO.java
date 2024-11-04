@@ -16,8 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FmReqMsgVO {
-    private String msg;
-    private Long senderId;
     private Integer type;
+    private Long senderId;
     private List<Long> receiverIds;
+    private String msg;
 }

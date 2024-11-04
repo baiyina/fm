@@ -1,11 +1,10 @@
 package com.baiyina.fmrouterapi.user.api;
 
 import com.baiyina.fmcommon.pojo.CommonResult;
-import com.baiyina.fmrouterapi.user.vo.UserLoginReqVO;
-import com.baiyina.fmrouterapi.user.vo.UserLoginResVO;
-import com.baiyina.fmrouterapi.user.vo.UserRegisterReqVO;
-import com.baiyina.fmrouterapi.user.vo.UserRegisterResVO;
+import com.baiyina.fmrouterapi.user.vo.*;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 /**
  * @description: TODO
@@ -27,4 +26,10 @@ public interface UserApi {
      * @return 用户id + expireTime
      */
     CommonResult<UserLoginResVO> login(UserLoginReqVO reqVo);
+
+    /**
+     * 获取在线用户列表
+     * @return 在线用户列表
+     */
+    CommonResult<List<UserVO>> getOnlineUserList();
 }

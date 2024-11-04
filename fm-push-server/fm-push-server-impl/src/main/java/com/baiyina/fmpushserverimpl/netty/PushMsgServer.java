@@ -1,6 +1,7 @@
 package com.baiyina.fmpushserverimpl.netty;
 
 import com.baiyina.fmcommon.protocol.protobuf.FmRequestProto;
+import com.baiyina.fmpushserverimpl.config.ApplicationConfig;
 import com.baiyina.fmpushserverimpl.netty.handler.FmPushServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -18,6 +19,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
@@ -32,12 +34,15 @@ import java.util.concurrent.CompletableFuture;
 public class PushMsgServer {
 
     private int nettyPort;
+    @Autowired
+    private ApplicationConfig applicationConfig;
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
 
     @PostConstruct
     @SneakyThrows
     public void start() {
+        nettyPort = applicationConfig.getNettyServerPort();
         ServerBootstrap serverBootstrap = new ServerBootstrap()
                 .group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)

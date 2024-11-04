@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class MsgServiceImpl implements MsgService {
     @Override
     public FmResMsgVO sendMsg(FmReqMsgVO reqMsgVO) {
-        System.out.println("send msg: " + reqMsgVO.getMsg());
+
         return null;
     }
 }
