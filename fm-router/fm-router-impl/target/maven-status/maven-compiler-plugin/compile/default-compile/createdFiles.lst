@@ -1,6 +1,0 @@
-com\baiyina\fmrouterbiz\controller\UserController.class
-com\baiyina\fmrouterbiz\controller\vo\UserLoginReqVO.class
-com\baiyina\fmrouterbiz\controller\vo\UserRegisterReqVO.class
-com\baiyina\fmrouterbiz\controller\vo\UserLoginResVO.class
-com\baiyina\fmrouterbiz\FmRouterBizApplication.class
-com\baiyina\fmrouterbiz\controller\vo\UserRegisterResVO.class

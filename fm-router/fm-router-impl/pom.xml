@@ -74,6 +74,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <!-- 引入 Jedis 的依赖，这样 Spring Boot 实现对 Jedis 的自动化配置 -->
         <dependency>
             <groupId>redis.clients</groupId>
@@ -100,6 +101,12 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
+        </dependency>
+
+        <!-- Caffeine 缓存依赖 -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
         </dependency>
 
 

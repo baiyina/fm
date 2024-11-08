@@ -33,7 +33,6 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 public class PushMsgServer {
 
-    private int nettyPort;
     @Autowired
     private ApplicationConfig applicationConfig;
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -42,7 +41,7 @@ public class PushMsgServer {
     @PostConstruct
     @SneakyThrows
     public void start() {
-        nettyPort = applicationConfig.getNettyServerPort();
+        int nettyPort = applicationConfig.getNettyServerPort();
         ServerBootstrap serverBootstrap = new ServerBootstrap()
                 .group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)

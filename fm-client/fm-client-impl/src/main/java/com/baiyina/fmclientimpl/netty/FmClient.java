@@ -1,5 +1,6 @@
 package com.baiyina.fmclientimpl.netty;
 
+import com.baiyina.fmclientimpl.netty.handler.FmClientHandler;
 import com.baiyina.fmcommon.protocol.protobuf.FmRequestProto;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -15,6 +16,7 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultThreadFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @description: TODO
@@ -23,6 +25,8 @@ import io.netty.util.concurrent.DefaultThreadFactory;
  * @project: fm
  */
 public class FmClient {
+    @Autowired
+    private FmClientHandler fmClientHandler;
 
     private final EventLoopGroup group = new NioEventLoopGroup(
             0,
@@ -43,8 +47,8 @@ public class FmClient {
                             .addLast(new ProtobufDecoder(FmRequestProto.FmReqProto.getDefaultInstance()))
                             .addLast(new ProtobufVarint32LengthFieldPrepender())
                             .addLast(new ProtobufEncoder())
-                            .addLast()
+                            .addLast(fmClientHandler);
                 }
-            })
+            });
 
 }

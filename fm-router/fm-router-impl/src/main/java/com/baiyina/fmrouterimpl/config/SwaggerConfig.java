@@ -24,7 +24,7 @@ public class SwaggerConfig {
     private Info apiInfo() {
         return new Info()
                 .title("fm-router")
-                .description("cim-forward-route api")
+                .description("cim-forward-router api")
                 .contact(contact())
                 .version("1.0.0");
     }

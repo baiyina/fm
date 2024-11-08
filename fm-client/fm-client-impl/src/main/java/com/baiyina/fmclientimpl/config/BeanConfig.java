@@ -1,8 +1,6 @@
 package com.baiyina.fmclientimpl.config;
 
 import com.baiyina.fmclientimpl.rpc.RouterRpcManager;
-import com.baiyina.fmclientimpl.utils.SpringBeanFactory;
-import com.baiyina.fmrouterapi.RouterApi;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -29,4 +29,5 @@ public class MsgController implements MsgApi {
         FmResMsgVO fmResMsgVO = msgService.sendMsg(reqMsgVO);
         return CommonResultUtil.success(fmResMsgVO);
     }
+
 }

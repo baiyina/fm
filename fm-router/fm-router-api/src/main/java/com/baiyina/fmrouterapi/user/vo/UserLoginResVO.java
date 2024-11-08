@@ -15,5 +15,6 @@ import java.time.LocalDateTime;
 @Data
 public class UserLoginResVO implements Serializable {
     private Long userId;
+    private String pushServerAddr;
     private LocalDateTime expireTime;
 }

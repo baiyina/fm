@@ -3,7 +3,6 @@ package com.baiyina.fmrouterimpl.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baiyina.fmrouterapi.user.vo.*;
-import com.baiyina.fmrouterimpl.constant.CachePrefix;
 import com.baiyina.fmrouterimpl.dao.cache.UserCacheMapper;
 import com.baiyina.fmrouterimpl.dao.dos.UserDO;
 import com.baiyina.fmrouterimpl.dao.mapper.UserMapper;
@@ -11,15 +10,10 @@ import com.baiyina.fmrouterimpl.enums.RouterExceptionEnum;
 import com.baiyina.fmrouterimpl.service.UserService;
 import com.baiyina.fmrouterimpl.utils.RouterExceptionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
-import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -44,6 +38,9 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private CacheManager cacheManager;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @Override
     public UserRegisterResVO register(UserRegisterReqVO reqVo) {
