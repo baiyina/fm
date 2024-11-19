@@ -47,3 +47,9 @@ eureka:
 springdoc:
   swagger-ui:
     enabled: true
+
+fm:
+  router:
+    load_balancing:
+      consistent_hash:
+        virtual_node_num: 5

@@ -1,11 +1,11 @@
 server:
-  port: 8093
+  port: 8090
 spring:
   application:
     name: fm-push-server
 fm:
   push:
-    server: 10015
+    server: 10010
 eureka:
   client:
     # 需要向注册中心注册自己，默认true
@@ -16,7 +16,7 @@ eureka:
       defaultZone: http://localhost:8081/eureka/
   instance:
     # eureka面板上的实例名称
-    instance-id: fm-push-server:8093
+    instance-id: fm-push-server:8090
     # 访问路径显示IP地址
     prefer-ip-address: true
     hostname: localhost

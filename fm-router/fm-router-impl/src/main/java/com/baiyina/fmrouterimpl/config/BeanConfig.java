@@ -1,7 +1,10 @@
 package com.baiyina.fmrouterimpl.config;
 
+import com.baiyina.fmrouterimpl.router.RouterHandler;
+import com.baiyina.fmrouterimpl.router.hash.impl.ConsistentHashRouterHandlerImpl;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -22,6 +25,12 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 public class BeanConfig {
+
+    private final ApplicationConfig applicationConfig;
+    public BeanConfig(ApplicationConfig applicationConfig) {
+        this.applicationConfig = applicationConfig;
+    }
+
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate redisTemplate = new StringRedisTemplate(factory);
@@ -50,5 +59,11 @@ public class BeanConfig {
                 .expireAfterWrite(30, TimeUnit.MINUTES)
                 .maximumSize(100)
                 .build();
+    }
+
+    @Bean
+    public RouterHandler routerHandler() {
+        return new ConsistentHashRouterHandlerImpl(
+                applicationConfig.getConsistentHashVirtualNodeNum());
     }
 }

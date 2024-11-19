@@ -7,6 +7,7 @@ import com.baiyina.fmrouterimpl.dao.cache.UserCacheMapper;
 import com.baiyina.fmrouterimpl.dao.dos.UserDO;
 import com.baiyina.fmrouterimpl.dao.mapper.UserMapper;
 import com.baiyina.fmrouterimpl.enums.RouterExceptionEnum;
+import com.baiyina.fmrouterimpl.service.RouterService;
 import com.baiyina.fmrouterimpl.service.UserService;
 import com.baiyina.fmrouterimpl.utils.RouterExceptionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -37,10 +38,7 @@ public class UserServiceImpl implements UserService{
     private UserMapper userMapper;
 
     @Autowired
-    private CacheManager cacheManager;
-
-    @Autowired
-    private DiscoveryClient discoveryClient;
+    private RouterService routerService;
 
     @Override
     public UserRegisterResVO register(UserRegisterReqVO reqVo) {
@@ -85,12 +83,15 @@ public class UserServiceImpl implements UserService{
         }
 
         userCacheMapper.addOnlineUser(user.getId(), user.getUsername());
+        // TODO: check push server urlAddress and cache
+        String pushServerUrl = routerService.route(user.getId().toString());
 
         UserLoginResVO resVo = new UserLoginResVO();
         resVo.setUserId(user.getId());
         resVo.setExpireTime(LocalDateTime.now());
+        resVo.setPushServerAddr(pushServerUrl);
 
-        log.info("login user: {}", user);
+        log.info("login user: {}, pushServer: {}", user, pushServerUrl);
         return resVo;
     }
 
