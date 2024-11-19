@@ -41,6 +41,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Eureka -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
