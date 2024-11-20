@@ -24,9 +24,10 @@ public class EurekaEventListener {
     public void handleRegisterEvent(EurekaInstanceRegisteredEvent event) {
         String instanceId = event.getInstanceInfo().getInstanceId();
         String urlAddress = event.getInstanceInfo().getIPAddr();
-        Integer port = event.getInstanceInfo().getPort();
-        activePushServerCacheMapper.updateOneCache(instanceId, urlAddress, port);
+        Integer nettyPort = Integer.valueOf(event.getInstanceInfo().getMetadata().get("netty_port"));
+        activePushServerCacheMapper.updateOneCache(instanceId, urlAddress, nettyPort);
         log.info("服务注册事件：" + instanceId + " : " + urlAddress );
+        log.info(event.getInstanceInfo().getMetadata().toString());
     }
 
     @EventListener

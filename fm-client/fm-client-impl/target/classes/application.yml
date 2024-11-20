@@ -7,3 +7,7 @@ spring:
 fm:
  router:
    url: http://127.0.0.1:8081
+
+logging:
+  level:
+    root: error

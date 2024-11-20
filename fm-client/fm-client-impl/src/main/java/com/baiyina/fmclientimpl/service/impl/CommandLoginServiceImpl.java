@@ -5,6 +5,7 @@ import com.baiyina.fmclientimpl.constant.CurrentUser;
 import com.baiyina.fmclientimpl.enums.ClientExceptionEnum;
 import com.baiyina.fmclientimpl.rpc.RouterRpcManager;
 import com.baiyina.fmclientimpl.service.CommandService;
+import com.baiyina.fmclientimpl.utils.ConsoleLogger;
 import com.baiyina.fmcommon.exception.FmException;
 import com.baiyina.fmrouterapi.user.vo.UserLoginResVO;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,6 @@ import org.springframework.stereotype.Service;
  * @date: 2024/10/28 16:33
  * @project: fm
  */
-@Slf4j
 @Service(":login")
 public class CommandLoginServiceImpl implements CommandService {
     @Autowired
@@ -36,6 +36,6 @@ public class CommandLoginServiceImpl implements CommandService {
         }
         UserLoginResVO loginResVO = routerRpcManager.login(username, password);
         CurrentUser.setCurrentUser(loginResVO.getUserId(), username);
-        log.info("login success, userId:{}, expireTime:{}", loginResVO.getUserId(), loginResVO.getExpireTime());
+        ConsoleLogger.info("login success, userId:{}, expireTime:{}", loginResVO.getUserId(), loginResVO.getExpireTime());
     }
 }

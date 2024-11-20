@@ -53,3 +53,7 @@ fm:
     load_balancing:
       consistent_hash:
         virtual_node_num: 5
+
+logging:
+  level:
+    com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: WARN

@@ -20,3 +20,9 @@ eureka:
     # 访问路径显示IP地址
     prefer-ip-address: true
     hostname: localhost
+    metadata-map:
+      netty_port: 10010
+
+logging:
+  level:
+    com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: WARN

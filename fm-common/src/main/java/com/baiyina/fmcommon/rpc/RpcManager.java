@@ -99,7 +99,8 @@ public final class RpcManager<T> {
          * @return 返回方法的执行结果
          * @throws Throwable 如果方法执行过程中出现异常
          */
-        @Override public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             Response response = null;
             String serverUrl = buildServerUrl(method);
             try {

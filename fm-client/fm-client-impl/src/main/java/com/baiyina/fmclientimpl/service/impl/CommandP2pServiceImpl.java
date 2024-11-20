@@ -3,6 +3,7 @@ package com.baiyina.fmclientimpl.service.impl;
 import com.baiyina.fmclientimpl.enums.ClientExceptionEnum;
 import com.baiyina.fmclientimpl.rpc.RouterRpcManager;
 import com.baiyina.fmclientimpl.service.CommandService;
+import com.baiyina.fmclientimpl.utils.ConsoleLogger;
 import com.baiyina.fmcommon.exception.FmException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,6 @@ public class CommandP2pServiceImpl implements CommandService {
             throw new FmException(ClientExceptionEnum.COMMAND_INPUT_ERROR.getCode(), "command input error");
         }
         routerRpcManager.sendP2pMsg(msgContent, receiverId);
-        log.info("send p2p msg success");
+        ConsoleLogger.info("send p2p msg success");
     }
 }

@@ -41,10 +41,8 @@ public class InputServiceImpl implements InputService {
             } catch (FmException e) {
                 log.error(e.getMessage());
             } catch (Exception e) {
-                log.error("系统异常，请联系管理员",e);
+                //log.error("系统异常，请联系管理员, {}",e.getMessage());
             }
-
-
         }
     }
 }

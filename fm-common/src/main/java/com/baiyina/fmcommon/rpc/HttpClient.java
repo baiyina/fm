@@ -1,5 +1,6 @@
 package com.baiyina.fmcommon.rpc;
 
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -14,6 +15,7 @@ import java.io.IOException;
  * @date: 2024/10/27 21:32
  * @project: fm
  */
+@Slf4j
 public final class HttpClient {
 
     private static final MediaType MEDIA_TYPE = MediaType.get("application/json");
@@ -38,10 +40,15 @@ public final class HttpClient {
                 .post(requestBody)
                 .build();
 
-        Response response = okHttpClient.newCall(request).execute();
+        Response response = null;
+        try {
+            response = okHttpClient.newCall(request).execute();
+        } catch (IOException e) {
+            log.error("Error occurred while sending request: " + e.getMessage());
+        }
         if (!response.isSuccessful()) {
             String errorMessage = "RPC failed with status code " + response.code() + ": " + response.body().string();
-            throw new IOException(errorMessage);
+            log.error(errorMessage);
         }
 
         return response;
@@ -64,10 +71,15 @@ public final class HttpClient {
                 .get()
                 .build();
 
-        Response response = okHttpClient.newCall(request).execute();
+        Response response = null;
+        try {
+            response = okHttpClient.newCall(request).execute();
+        } catch (IOException e) {
+            log.error("Error occurred while sending request: " + e.getMessage());
+        }
         if (!response.isSuccessful()) {
             String errorMessage = "Unexpected code " + response.code() + ": " + response.body().string();
-            throw new IOException(errorMessage);
+            log.error(errorMessage);
         }
 
         return response;
